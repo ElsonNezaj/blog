@@ -1,7 +1,10 @@
+import icons from '../src/img/icons.svg'
 import { async } from 'regenerator-runtime'
 import * as model from './model.js'
 import { previewResults } from './viewResults.js'
 import { previewPosts, setHash } from './previewPosts.js'
+import { btn } from './pagiView.js'
+
 let data = model.state.post
 
 const getAll = async function () {
@@ -11,12 +14,23 @@ const getAll = async function () {
 const createResults = async function () {
   try {
     parent = document.querySelector('.results')
+
     // Get the data for it
     await getAll()
     const data = model.state.post
-
     // Create the UI
     await previewResults(data)
+
+    // Pagination implementation
+    const listItem = Array.from(document.querySelectorAll('.preview'))
+    const paginationLimit = 10
+    const pageCount = Math.ceil(listItem.length / paginationLimit)
+    const paginationNumbers = document.getElementById('pagination-numbers')
+    let currentPage
+    const btnPrev = document.querySelector('.pagination__btn--prev')
+    const btnNext = document.querySelector('.pagination__btn--next')
+
+    btn(paginationLimit, listItem, btnPrev, btnNext)
   } catch (err) {
     console.error(err)
   }
