@@ -15,15 +15,13 @@ export const btn = async function (
     pageNumber.setAttribute('aria-label', 'Page ' + index)
 
     paginationNumbers.appendChild(pageNumber)
-  }
 
-  const getPaginationNumbers = () => {
-    for (let i = 1; i <= pageCount; i++) {
-      appendPageNumber(i)
+    const getPaginationNumbers = () => {
+      for (let i = 1; i <= pageCount; i++) {
+        appendPageNumber(i)
+      }
     }
   }
-
-  // Display Active Page
 
   const handleActivePageNumber = () => {
     document.querySelectorAll('.pagination-number').forEach((button) => {

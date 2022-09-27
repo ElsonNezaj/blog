@@ -1391,11 +1391,10 @@ const btn = async function(paginationLimit, listItem, btnPrev, btnNext) {
         pageNumber.setAttribute("page-index", index);
         pageNumber.setAttribute("aria-label", "Page " + index);
         paginationNumbers.appendChild(pageNumber);
+        const getPaginationNumbers = ()=>{
+            for(let i = 1; i <= pageCount; i++)appendPageNumber(i);
+        };
     };
-    const getPaginationNumbers = ()=>{
-        for(let i = 1; i <= pageCount; i++)appendPageNumber(i);
-    };
-    // Display Active Page
     const handleActivePageNumber = ()=>{
         document.querySelectorAll(".pagination-number").forEach((button)=>{
             button.classList.remove("active");
