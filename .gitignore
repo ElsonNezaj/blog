@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 /parcel-cache
+/parcel-cache/data.mdb
 /.pnp
 .pnp.js
 
